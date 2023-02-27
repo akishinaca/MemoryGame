@@ -25,7 +25,6 @@ body {
     width: 180px;
     height: 180px;
     border-radius: 10px;
-    animation: starting .7s linear;
 }
 
 .card:focus, .image:focus, .img:focus {
@@ -35,13 +34,13 @@ body {
 .card{
     position: relative;
     background-color: aqua;
+    animation: starting .7s linear;
 }
 
 .image{
     position: absolute;
     z-index: -1;
     backface-visibility: visible;
-    pointer-events: none;
 }
 
 img{
@@ -55,9 +54,10 @@ img{
 
 @keyframes starting {
     from {
-        transform: rotate(0);
+        transform: rotateY(0);
     } to {
-        transform: rotate(360deg);
+        transform: rotateY(670deg);
+        perspective: 300px;
     }
 }
 
@@ -75,8 +75,27 @@ img{
 .card-flipped > .image{
     visibility: visible;
     z-index: 2;
+    pointer-events: none;
 }
 
-.card-match{
-    visibility: hidden;
+.card-match > .image{
+    animation: match .185s forwards;
+}
+
+.card-match {
+    background-color: #fff;
+}
+
+@keyframes match {
+    from {
+        top: 0;
+        left: 0;
+        width: 180px;
+        height: 180px;
+    } to {
+        top: 50%;
+        left: 50%;
+        width: 0px;
+        height: 0px;
+    }
 }

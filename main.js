@@ -21,50 +21,46 @@ const setImages = () => {
 }
 setImages();
 
+
 const flipCards = (e) => {
 
     const flippedCard = e.target
-    // const flippedCard = e.target.children[0].children[0]
-    // console.log(flippedCard)
-
-    // console.log(flippedCard)
+    console.log(flippedCard)
 
     flippedCard.classList.add('card-flipped');
     flippedCards.push(flippedCard);
-
-    if(flippedCards.length > 2) {
-        return
-    }
     
     if(flippedCards.length === 2) {
-        flippedCard.length = 2
 
         const pickedOne = flippedCards[0].innerHTML
         const pickedTwo = flippedCards[1].innerHTML
-        const imgOne = flippedCards[0]
-        const imgTwo = flippedCards[1]
-        console.log(pickedTwo)
-        console.log(imgTwo)
         
-        
-            if(pickedOne !== pickedTwo){
+        if(pickedOne !== pickedTwo){
                 setTimeout(function(){
                     flippedCards.forEach(card => {
                         card.classList.remove('card-flipped');
                     });
                     flippedCards = [];
-                },1000);
+                },800);
             } else if (pickedOne === pickedTwo) {
                 flippedCards.forEach((card) => {
                     setTimeout(() => {
-                        
                         card.classList.add('card-match');
                         flippedCards = [];
-                    }, 1000);
+                    }, 400);
                 });
             }
             
-          
+            
+        } else if (flippedCards.length > 2) {
+        flippedCards[2].classList.remove('card-flipped')
+        flippedCards[3].classList.remove('card-flipped')
+        flippedCards[4].classList.remove('card-flipped')
+        flippedCards[5].classList.remove('card-flipped')
+        flippedCards[6].classList.remove('card-flipped')
+        flippedCards[7].classList.remove('card-flipped')
+        flippedCards[8].classList.remove('card-flipped')
+        flippedCards[9].classList.remove('card-flipped')
     }
 }
 
