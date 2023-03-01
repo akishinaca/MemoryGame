@@ -3,12 +3,54 @@
     padding: 0;
     border: 0;
 }
+html {
+    font-size: 62.5%;
+  }
 
 body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.starter-modal {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 4rem;
+    background-color: rgba(93, 68, 71, 0.85);
+    z-index: 100;
+}
+
+.start {
+    margin-top: 1.5em;
+    padding: 10px 30px;
+    font-size: inherit;
+    font-family: inherit;
+    background-color: #3535a8;
+    border-radius: 8px;
+}
+
+.timer {
+    font-size: 3rem;
+    text-align: center;
+    background-color: #5f5fba;
+    border-radius: 8px;
+}
+
+.time{
+    padding: 10px 25px;
 }
 
 .game-board{
@@ -17,8 +59,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-columns: repeat(4, 1fr);
     gap: 1em;
-    border: 1px solid black;
-
 }
 
 .card, .image{

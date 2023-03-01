@@ -1,8 +1,13 @@
 const cards = document.querySelectorAll('.card')
+const starterModal = document.querySelector('.starter-modal')
+const startBtn = document.querySelector('.start')
+const time = document.querySelector('.time');
 
 const images = ['./img/em1.png','./img/em2.png','./img/em3.png','./img/em4.png','./img/em5.png','./img/em6.png','./img/em7.png','./img/em8.png']
 const imageContainers = document.querySelectorAll('.image')
 let flippedCards = []
+let cardMatches = []
+let sec = 45;
 
 
 const setImages = () => {
@@ -21,11 +26,38 @@ const setImages = () => {
 }
 setImages();
 
+const startingGame = () => {
+    starterModal.style.display = 'none'
+    timerCountdown();
+}
+
+const timerCountdown = () => {
+
+    const timeCount = setInterval(function() {
+
+        time.innerHTML = '0' + ':' + sec;
+        sec--;
+    
+        if (sec <= 9) {
+            time.innerHTML = '0' + ':' + '0' + sec;
+        } 
+        if (sec == 0) {
+            clearInterval(timeCount)
+            checkResult();
+        }
+        if(sec > 0 && cardMatches.length == 16){
+            console.log('winner')
+            clearInterval(timeCount)
+        }
+    } ,1000)
+    
+}
+
+
 
 const flipCards = (e) => {
 
     const flippedCard = e.target
-    console.log(flippedCard)
 
     flippedCard.classList.add('card-flipped');
     flippedCards.push(flippedCard);
@@ -46,12 +78,11 @@ const flipCards = (e) => {
                 flippedCards.forEach((card) => {
                     setTimeout(() => {
                         card.classList.add('card-match');
+                        cardMatches.push('1')
                         flippedCards = [];
                     }, 400);
                 });
             }
-            
-            
         } else if (flippedCards.length > 2) {
         flippedCards[2].classList.remove('card-flipped')
         flippedCards[3].classList.remove('card-flipped')
@@ -61,8 +92,14 @@ const flipCards = (e) => {
         flippedCards[7].classList.remove('card-flipped')
         flippedCards[8].classList.remove('card-flipped')
         flippedCards[9].classList.remove('card-flipped')
+    }   
+}
+
+const checkResult = () => {
+     if (cardMatches.length < 16) {
+        console.log('loser')
     }
 }
 
-
+startBtn.addEventListener('click', startingGame)
 cards.forEach(card => card.addEventListener('click', flipCards))
