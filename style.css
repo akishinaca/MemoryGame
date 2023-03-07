@@ -18,7 +18,7 @@ body {
     font-family: 'DotGothic16', sans-serif;
 }
 
-.starter-modal {
+.starter-modal, .loser-modal {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -31,6 +31,10 @@ body {
     font-size: 4rem;
     background-color: rgba(93, 68, 71, 0.85);
     z-index: 100;
+}
+
+.loser-modal {
+    display: none;
 }
 
 .start {

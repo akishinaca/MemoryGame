@@ -1,6 +1,8 @@
 const cards = document.querySelectorAll('.card')
 const starterModal = document.querySelector('.starter-modal')
+const loserModal = document.querySelector('.loser-modal')
 const startBtn = document.querySelector('.start')
+const tryAgainBtn = document.querySelector('.try')
 const time = document.querySelector('.time');
 
 const images = ['./img/em1.png','./img/em2.png','./img/em3.png','./img/em4.png','./img/em5.png','./img/em6.png','./img/em7.png','./img/em8.png']
@@ -53,53 +55,58 @@ const timerCountdown = () => {
     
 }
 
-
-
-const flipCards = (e) => {
-
-    const flippedCard = e.target
-
-    flippedCard.classList.add('card-flipped');
-    flippedCards.push(flippedCard);
+    const flipCards = (e) => {
     
-    if(flippedCards.length === 2) {
-
-        const pickedOne = flippedCards[0].innerHTML
-        const pickedTwo = flippedCards[1].innerHTML
+        const flippedCard = e.target
+    
+        flippedCard.classList.add('card-flipped');
+        flippedCards.push(flippedCard);
         
-        if(pickedOne !== pickedTwo){
-                setTimeout(function(){
-                    flippedCards.forEach(card => {
-                        card.classList.remove('card-flipped');
-                    });
-                    flippedCards = [];
-                },800);
-            } else if (pickedOne === pickedTwo) {
-                flippedCards.forEach((card) => {
-                    setTimeout(() => {
-                        card.classList.add('card-match');
-                        cardMatches.push('1')
+        if(flippedCards.length === 2) {
+    
+            const pickedOne = flippedCards[0].innerHTML
+            const pickedTwo = flippedCards[1].innerHTML
+            
+            if(pickedOne !== pickedTwo){
+                    setTimeout(function(){
+                        flippedCards.forEach(card => {
+                            card.classList.remove('card-flipped');
+                        });
                         flippedCards = [];
-                    }, 400);
-                });
-            }
-        } else if (flippedCards.length > 2) {
-        flippedCards[2].classList.remove('card-flipped')
-        flippedCards[3].classList.remove('card-flipped')
-        flippedCards[4].classList.remove('card-flipped')
-        flippedCards[5].classList.remove('card-flipped')
-        flippedCards[6].classList.remove('card-flipped')
-        flippedCards[7].classList.remove('card-flipped')
-        flippedCards[8].classList.remove('card-flipped')
-        flippedCards[9].classList.remove('card-flipped')
-    }   
-}
+                    },800);
+                } else if (pickedOne === pickedTwo) {
+                    flippedCards.forEach((card) => {
+                        setTimeout(() => {
+                            card.classList.add('card-match');
+                            cardMatches.push('1')
+                            flippedCards = [];
+                        }, 400);
+                    });
+                }
+            } else if (flippedCards.length > 2) {
+            flippedCards[2].classList.remove('card-flipped')
+            flippedCards[3].classList.remove('card-flipped')
+            flippedCards[4].classList.remove('card-flipped')
+            flippedCards[5].classList.remove('card-flipped')
+            flippedCards[6].classList.remove('card-flipped')
+            flippedCards[7].classList.remove('card-flipped')
+            flippedCards[8].classList.remove('card-flipped')
+            flippedCards[9].classList.remove('card-flipped')
+        }   
+    }
+
+
 
 const checkResult = () => {
-     if (cardMatches.length < 16) {
-        console.log('loser')
+    if (cardMatches.length < 16) {
+        loserModal.style.display = 'flex'
     }
 }
 
+const playAgain = () => {
+    window.location.reload();
+}
+
 startBtn.addEventListener('click', startingGame)
+tryAgainBtn.addEventListener('click', playAgain)
 cards.forEach(card => card.addEventListener('click', flipCards))
