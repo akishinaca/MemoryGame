@@ -20,7 +20,6 @@ body {
 
 .starter-modal, .loser-modal, .winner-modal {
     position: absolute;
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -33,11 +32,11 @@ body {
     z-index: 100;
 }
 
-.loser-modal {
-    display: none;
+.starter-modal {
+    display: flex;
 }
 
-.winner-modal {
+.loser-modal, .winner-modal {
     display: none;
 }
 
