@@ -1,10 +1,14 @@
 const cards = document.querySelectorAll('.card')
 const starterModal = document.querySelector('.starter-modal')
 const loserModal = document.querySelector('.loser-modal')
+const winnerModal = document.querySelector('.winner-modal')
 const startBtn = document.querySelector('.start')
 const tryAgainBtn = document.querySelector('.try')
+const awardBtn = document.querySelector('.award')
+const prize = document.querySelector('.prize')
 const time = document.querySelector('.time');
 
+const winnerPics = ['./img/w1.jpg', './img/w2.jpg', './img/w3.jpg', './img/w4.jpg', './img/w8.jpg', './img/w5.jpg', './img/w6.jpg', './img/w7.jpg' ]
 const images = ['./img/em1.png','./img/em2.png','./img/em3.png','./img/em4.png','./img/em5.png','./img/em6.png','./img/em7.png','./img/em8.png']
 const imageContainers = document.querySelectorAll('.image')
 let flippedCards = []
@@ -48,7 +52,7 @@ const timerCountdown = () => {
             checkResult();
         }
         if(sec > 0 && cardMatches.length == 16){
-            console.log('winner')
+            winner();
             clearInterval(timeCount)
         }
     } ,1000)
@@ -107,6 +111,20 @@ const playAgain = () => {
     window.location.reload();
 }
 
+const winner = () => {
+    winnerModal.style.display = 'flex';
+}
+
+const getThePrize = () => {
+    prize.style.display = 'block';
+    const randomPic = winnerPics[Math.floor(Math.random() * winnerPics.length)];
+
+    const pic = document.createElement('img');
+    pic.setAttribute('src', randomPic)
+    prize.append(pic)
+}
+
 startBtn.addEventListener('click', startingGame)
 tryAgainBtn.addEventListener('click', playAgain)
+awardBtn.addEventListener('click', getThePrize)
 cards.forEach(card => card.addEventListener('click', flipCards))
