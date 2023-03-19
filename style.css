@@ -16,6 +16,8 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'DotGothic16', sans-serif;
+    background-image: url('./img/bg1.jpg');
+    overflow: hidden;
 }
 
 .starter-modal {
@@ -40,6 +42,12 @@ body {
     z-index: 100;
 }
 
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -5;
+}
 
 .prize {
     display: none;
@@ -48,6 +56,7 @@ body {
     width: 640px;
     height: 480px;
 }
+
 .prize img {
     position: absolute;
     top: 0;
@@ -111,7 +120,7 @@ body {
 
 .card{
     position: relative;
-    background-color: aqua;
+    background-color: #8800ff;
     animation: starting .7s linear;
 }
 
@@ -125,7 +134,7 @@ img{
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: #ddd3e6;
     transform: rotateY(180deg);
     pointer-events: none;
 }
@@ -161,7 +170,7 @@ img{
 }
 
 .card-match {
-    background-color: #fff;
+    background-color: transparent;
 }
 
 @keyframes match {
