@@ -14,7 +14,7 @@ const images = ['./img/em1.png','./img/em2.png','./img/em3.png','./img/em4.png',
 const imageContainers = document.querySelectorAll('.image')
 let flippedCards = []
 let cardMatches = []
-let sec = 30;
+let sec = 40;
 
 
 const setImages = () => {
